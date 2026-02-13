@@ -4,9 +4,6 @@ const container = document.getElementById("contenedor-peliculas");
 
 let usersList = [];
 
-// =========================
-// REGISTRAR USUARIO
-// =========================
 async function registerUser() {
   const name = document.getElementById("userName").value;
   const email = document.getElementById("userEmail").value;
@@ -26,17 +23,11 @@ async function registerUser() {
   loadUsers();
 }
 
-// =========================
-// CARGAR USUARIOS
-// =========================
 async function loadUsers() {
   const res = await fetch(`${API_URL}/users`);
   usersList = await res.json();
 }
 
-// =========================
-// OBTENER PELÍCULAS
-// =========================
 async function loadMovies() {
   const res = await fetch(`${API_URL}/movies`);
   const movies = await res.json();
@@ -80,9 +71,6 @@ async function loadMovies() {
   });
 }
 
-// =========================
-// CARGAR RESEÑAS
-// =========================
 async function loadReviews(movieId) {
   const res = await fetch(`${API_URL}/reviews/movie/${movieId}`);
   const reviews = await res.json();
@@ -98,9 +86,6 @@ async function loadReviews(movieId) {
   });
 }
 
-// =========================
-// AGREGAR RESEÑA
-// =========================
 async function addReview(movieId) {
   const user = document.getElementById(`user-${movieId}`).value;
   const rating = document.getElementById(`rating-${movieId}`).value;
@@ -126,9 +111,6 @@ async function addReview(movieId) {
   loadMovies();
 }
 
-// =========================
-// INIT
-// =========================
 async function init() {
   await loadUsers();
   await loadMovies();
