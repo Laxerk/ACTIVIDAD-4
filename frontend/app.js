@@ -4,6 +4,18 @@ const container = document.getElementById("contenedor-peliculas");
 
 let usersList = [];
 
+function getStars(rating) {
+  const rounded = Math.round(rating);
+  let stars = "";
+
+  for (let i = 0; i < 5; i++) {
+    stars += i < rounded ? "⭐" : "☆";
+  }
+
+  return `<span class="stars">${stars} (${rating.toFixed(1)})</span>`;
+}
+
+
 async function registerUser() {
   const name = document.getElementById("userName").value;
   const email = document.getElementById("userEmail").value;
@@ -46,7 +58,7 @@ async function loadMovies() {
       <h3>${movie.title}</h3>
       <p><strong>Género:</strong> ${movie.genre}</p>
       <p><strong>Año:</strong> ${movie.year}</p>
-      <p><strong>Promedio:</strong> ${movie.averageRating.toFixed(1)}</p>
+      <p class="rating">Promedio: ${getStars(movie.averageRating)}</p>
 
       <button onclick="loadReviews('${movie._id}')">
         Ver Reseñas
@@ -80,7 +92,7 @@ async function loadReviews(movieId) {
 
   reviews.forEach(review => {
     section.innerHTML += `
-      <p><strong>${review.user.name}</strong>: ${review.rating}<br>
+      <p><strong>${review.user.name}</strong>: ${getStars(review.rating)}<br>
       ${review.comment}</p>
     `;
   });
