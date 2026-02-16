@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reseñador Crack de Peliculas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Reseñas de Peliculas</h1>
+<body class="auth-body">
 
-    <div class="user-box">
-        <h2>Registrar Usuario</h2>
-        <input type="text" id="userName" placeholder="Nombre">
-        <input type="email" id="userEmail" placeholder="Correo">
-        <button onclick="registerUser()">Registrar</button>
-    </div>
+  <div class="auth-container">
+    <h2 class="auth-title">Iniciar Sesión</h2>
 
-    <div id="contenedor-peliculas"></div>
+    <input type="email" id="loginEmail" placeholder="Correo">
+    <input type="password" id="loginPassword" placeholder="Contraseña">
 
-    <script src="app.js"></script>
+    <button class="auth-btn" onclick="login()">Entrar</button>
+
+    <p class="auth-link">
+      ¿No tienes cuenta?
+      <a href="register.html">Regístrate</a>
+    </p>
+  </div>
+
+  <script src="auth.js"></script>
 </body>
 </html>

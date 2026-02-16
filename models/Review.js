@@ -8,4 +8,6 @@ const reviewSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+
+reviewSchema.index({ movie: 1, user: 1 }, { unique: true });
 module.exports = mongoose.model('Review', reviewSchema);
